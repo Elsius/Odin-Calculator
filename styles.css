@@ -10,8 +10,10 @@ body {
 #output {
     background-color: rgb(222, 222, 222);
     border: 2px rgb(100,100,100) solid;
-    padding: 3px;
+    padding: 5px;
     text-align: end;
+    height: 100px;
+    
 }
 
 .utilButton {
@@ -22,3 +24,18 @@ body {
     background-color: cyan;
 }
 
+#buttonContainers {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 3px;
+    padding: 5px;
+    height: 375px;
+}
+
+#buttonContainers button {
+    border: 1px black solid;
+}
+
+#num0 {
+    grid-column: 1 / 3;
+}
