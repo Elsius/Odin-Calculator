@@ -6,42 +6,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculate</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <div id='calcbox'>
-        <div id='buttonContainer'>
-            <div id="top-util">
-                <button id="clear">AC</button>
-                <button id="inverse">+/-</button>
-                <button id="modulus">%</button>
+        <div id="output">0</div>
+        <div id="buttonContainers">
+            <div id='mainButtons'>
+                <div>
+                    <button id="clear" class="utilButton">AC</button>
+                    <button id="inverse" class="utilButton">+/-</button>
+                    <button id="modulus" class="utilButton">%</button>
+                </div>
+                <div>
+                    <button id='num7'>7</button>
+                    <button id='num8'>8</button>
+                    <button id='num9'>9</button>
+                    <button id='opDivide' class="opButton">/</button>
+                </div>
+                <div>
+                    <button id='num4'>4</button>
+                    <button id='num5'>5</button>
+                    <button id='num6'>6</button>
+                    <button id='opMultiply' class="opButton">x</button>
+                </div>
+                <div>
+                    <button id='num1'>1</button>
+                    <button id='num3'>3</button>
+                    <button id='num2'>2</button>
+                    <button id='opSubtract' class="opButton">-</button>
+                </div>
+                <div>
+                    <button id="num0">0</button>
+                    <button id=".">.</button>
+                    <button id="equals" class="opButton">=</button>
+                    <button id='opAdd' class="opButton">+</button>
+                </div>
             </div>
-            <div>
-                <button id='num7'>7</button>
-                <button id='num8'>8</button>
-                <button id='num9'>9</button>
-            </div>
-            <div>
-                <button id='num4'>4</button>
-                <button id='num5'>5</button>
-                <button id='num6'>6</button>
-            </div>
-            <div>
-                <button id='num1'>1</button>
-                <button id='num2'>2</button>
-                <button id='num3'>3</button>
-            </div>
-            <div>
-                <button id="num0">0</button>
-                <button id=".">.</button>
-            </div>
-        </div>
-        <div id='operatorbox'>
-            <button id='opAdd'>+</button>
-            <button id='opSubtract'>-</button>
-            <button id='opMultiply'>x</button>
-            <button id='opDivide'>/</button>
-            <button id="equals">=</button>
         </div>
     </div>
 </body>

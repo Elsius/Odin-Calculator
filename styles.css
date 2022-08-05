@@ -1,0 +1,24 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+#calcbox {
+    width: 500px;
+    height: 500px;
+    border: 1px black solid;
+}
+#output {
+    background-color: rgb(222, 222, 222);
+    border: 2px rgb(100,100,100) solid;
+    padding: 3px;
+    text-align: end;
+}
+
+.utilButton {
+    background-color: orange;
+}
+
+.opButton {
+    background-color: cyan;
+}
+
