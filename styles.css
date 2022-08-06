@@ -29,13 +29,13 @@ body {
     grid-template-columns: auto auto auto auto;
     gap: 3px;
     padding: 5px;
-    height: 375px;
+    height: 350px;
 }
 
 #buttonContainers button {
     border: 1px black solid;
 }
 
-#num0 {
+.num0 {
     grid-column: 1 / 3;
 }

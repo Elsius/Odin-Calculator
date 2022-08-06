@@ -7,33 +7,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculate</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="calculator.js" defer></script>
 </head>
 
 <body>
     <div id='calcbox'>
-        <div id="output">
-            <h1>0</h2>
+        <div>
+            <h1 id="output"></h2>
         </div>
         <div id="buttonContainers">
-                    <button id="clear" class="utilButton">AC</button>
-                    <button id="inverse" class="utilButton">+/-</button>
-                    <button id="modulus" class="utilButton">%</button>
-                    <button id='opDivide' class="opButton">/</button>
-                    <button id='num7'>7</button>
-                    <button id='num8'>8</button>
-                    <button id='num9'>9</button>
-                    <button id='opMultiply' class="opButton">x</button>
-                    <button id='num4'>4</button>
-                    <button id='num5'>5</button>
-                    <button id='num6'>6</button>
-                    <button id='opSubtract' class="opButton">-</button>
-                    <button id='num1'>1</button>
-                    <button id='num3'>3</button>
-                    <button id='num2'>2</button>
-                    <button id='opAdd' class="opButton">+</button>
-                    <button id="num0">0</button>
-                    <button id=".">.</button>
-                    <button id="equals" class="opButton">=</button>
+                    <button id="clear" class="utilButton calcButton">AC</button>
+                    <button id="inverse" class="utilButton calcButton">+/-</button>
+                    <button id="modulus" class="opButton calcButton">%</button>
+                    <button id='divide' class="opButton calcButton">/</button>
+                    <button id='9' class="numButton calcButton">9</button>
+                    <button id='7' class="numButton calcButton">7</button>
+                    <button id='8' class="numButton calcButton">8</button>
+                    <button id='multiply' class="opButton calcButton">x</button>
+                    <button id='4' class="numButton calcButton">4</button>
+                    <button id='5' class="numButton calcButton">5</button>
+                    <button id='6' class="numButton calcButton">6</button>
+                    <button id='subtract' class="opButton calcButton">-</button>
+                    <button id='1' class="numButton calcButton">1</button>
+                    <button id='3' class="numButton calcButton">3</button>
+                    <button id='2' class="numButton calcButton">2</button>
+                    <button id='add' class="opButton calcButton">+</button>
+                    <button id="0" class="num0 numButton calcButton">0</button>
+                    <button id="dot" class="utilButton calcButton">.</button>
+                    <button id="equals" class="opButton calcButton">=</button>
         </div>
     </div>
 </body>
