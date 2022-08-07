@@ -1,34 +1,48 @@
 const mathFuncts = {
-    add : (a,b) => parseInt(a) + parseInt(b),
-    subtract : (a,b) => a - b,
-    multiply : (a,b) => a * b,
-    divide : (a,b) => a / b
+    add: (a, b) => parseInt(a) + parseInt(b),
+    subtract: (a, b) => a - b,
+    multiply: (a, b) => a * b,
+    divide: (a, b) => a / b
 }
-function doMath(firstNum,scndNum,operation) {
-    return mathFuncts[operation](firstNum,scndNum)
-} 
+function doMath(firstNum, scndNum, operation) {
+    return mathFuncts[operation](firstNum, scndNum)
+}
 
-let result = 0;
+let result = 0,
+    currentNum = 0,
+    active = false;
 const output = document.querySelector('#output');
 
 
-const pressed = document.querySelectorAll('.calcButton') 
+const pressed = document.querySelectorAll('.calcButton')
 //pull all buttons and apply event listener with a loop that calls function
 pressed.forEach(el => el.addEventListener("click", getButtonPressed))
 
 
-//clicking a button calls this function
+//clicking a button calls function to check what is pressed
 //this function pulls element id of button pressed
 //act based on this id, use e?
+
+/*active state is when the number we're working with is not from result
+if it is from prev result, we work with an active state
+from there, any numbers pressed is appended into the active state var
+when a non-num button is pressed, we do math on the active state var and
+it is then outputted a result to display and closes the active state*/
 function getButtonPressed(e) {
-    if (e.target.classList.contains('numButton')){
-        console.log('hi')
+    if (e.target.classList.contains('numButton')) {
+        let num = e.target.id
         //at this point when clicking a button, it calls this function
         //this if statement checks if its a number button
-        
+        if (active == false) {
+            active = true
+            output.textContent = '';
+        }
+        return numberPressed(num)
     }
 }
 //make buttons apply to 'result', change output.text = result
-function updateDisplay(input){
-    output.textContent = input
+
+function numberPressed(number) {
+    output.textContent = output.textContent + number
+
 }
