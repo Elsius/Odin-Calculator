@@ -29,20 +29,44 @@ from there, any numbers pressed is appended into the active state var
 when a non-num button is pressed, we do math on the active state var and
 it is then outputted a result to display and closes the active state*/
 function getButtonPressed(e) {
+    const button = e.target.id;
+    if (button == 'clear'){
+        allClear()
+        return
+    }
     if (e.target.classList.contains('numButton')) {
-        let num = e.target.id
-        //at this point when clicking a button, it calls this function
-        //this if statement checks if its a number button
         if (active == false) {
             active = true
             output.textContent = '';
         }
-        return numberPressed(num)
+        numberPressed(button)
+        return
+    }
+    if (e.target.classList.contains('opButton')){
+        applyOperator(button)
+        return
     }
 }
 //make buttons apply to 'result', change output.text = result
 
 function numberPressed(number) {
+    if (number == 'dot'){
+        if (output.textContent.indexOf('.') != -1){
+            return
+        }
+        number = '.';
+    }
     output.textContent = output.textContent + number
+    currentNum = parseFloat(output.textContent)
+}
 
+function allClear(){
+    result = 0;
+    currentNum = 0;
+    output.textContent = '0';
+    active = false;
+}
+
+function applyOperator(operator){
+    console.log(doMath(result,currentNum,operator))
 }
