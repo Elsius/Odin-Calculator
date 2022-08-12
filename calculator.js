@@ -61,7 +61,6 @@ function allClear(clearDisplay = true){
     }
 }
 function applyOperator(operator){
-    console.log(`prevNum is ${prevNum}. currentNum is ${currentNum}. opHolder is ${opHolder}. result is ${result}`)
     if (operator == 'equals'){
         if (opHolder == ''){
             return
@@ -69,6 +68,12 @@ function applyOperator(operator){
         output.textContent = doMath(prevNum,currentNum,opHolder)
         prevNum = output.textContent;
         result = prevNum;
+        return
+    }
+    if (operator == 'inverse'){
+        currentNum = currentNum * (-1);
+        output.textContent = currentNum;
+        console.log('we flipped')
         return
     }
     opHolder = operator;
