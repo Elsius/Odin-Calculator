@@ -1,21 +1,23 @@
 const mathFuncts = {
-    add: (a, b) => parseInt(a) + parseInt(b),
+    add: (a, b) => parseFloat(a) + parseFloat(b),
     subtract: (a, b) => a - b,
     multiply: (a, b) => a * b,
-    divide: (a, b) => a / b
+    divide: (a, b) => a / b,
+    modulus: (a,b) => a % b
 }
 function doMath(firstNum, scndNum, operation) {
     return mathFuncts[operation](firstNum, scndNum)
 }
 
-let result = 0,
-    currentNum = 0,
-    active = false;
+let prevNum = '',
+    currentNum = '',
+    result = '',
+    opHolder = '';
 const output = document.querySelector('#output');
 
 
 const pressed = document.querySelectorAll('.calcButton')
-//pull all buttons and apply event listener with a loop that calls function
+//pull all buttons and apply event listener using a loop that calls function
 pressed.forEach(el => el.addEventListener("click", getButtonPressed))
 
 
@@ -23,11 +25,6 @@ pressed.forEach(el => el.addEventListener("click", getButtonPressed))
 //this function pulls element id of button pressed
 //act based on this id, use e?
 
-/*active state is when the number we're working with is not from result
-if it is from prev result, we work with an active state
-from there, any numbers pressed is appended into the active state var
-when a non-num button is pressed, we do math on the active state var and
-it is then outputted a result to display and closes the active state*/
 function getButtonPressed(e) {
     const button = e.target.id;
     if (button == 'clear'){
@@ -35,10 +32,6 @@ function getButtonPressed(e) {
         return
     }
     if (e.target.classList.contains('numButton')) {
-        if (active == false) {
-            active = true
-            output.textContent = '';
-        }
         numberPressed(button)
         return
     }
@@ -47,26 +40,64 @@ function getButtonPressed(e) {
         return
     }
 }
-//make buttons apply to 'result', change output.text = result
-
 function numberPressed(number) {
-    if (number == 'dot'){
+    if (number == 'dot'){//check if a decimal already exists
         if (output.textContent.indexOf('.') != -1){
             return
         }
         number = '.';
     }
-    output.textContent = output.textContent + number
-    currentNum = parseFloat(output.textContent)
+    currentNum += number
+    output.textContent = currentNum
 }
 
-function allClear(){
-    result = 0;
-    currentNum = 0;
+function allClear(clearDisplay = true){
+    prevNum = '';
+    currentNum = '';
+    opHolder = '';
+    result = '';
+    if (clearDisplay == true){
     output.textContent = '0';
-    active = false;
+    }
+}
+function applyOperator(operator){
+    console.log(`prevNum is ${prevNum}. currentNum is ${currentNum}. opHolder is ${opHolder}. result is ${result}`)
+    if (operator == 'equals'){
+        if (opHolder == ''){
+            return
+        }
+        output.textContent = doMath(prevNum,currentNum,opHolder)
+        prevNum = output.textContent;
+        result = prevNum;
+        return
+    }
+    opHolder = operator;
+    if (result != ''){
+    prevNum = result;
+    } else {
+        prevNum = currentNum;
+    }
+    currentNum = '';
 }
 
-function applyOperator(operator){
-    console.log(doMath(result,currentNum,operator))
+/* display defaults at 0, currentNum = '';
+click a button, calls a function to see what is pressed
+if it is a number, {
+    if opHolder is not empty, {push currentNum to prevNum}
+    concat number to currentNum
+    display = currentNum
 }
+if an operator is pressed, put it into opHolder
+
+if it is a util, run its function
+
+equals function
+    result = doMath(prevNum,CurrentNum,operator)
+    display = result
+    clear currentNum, opHolder, prevNum
+inverse function
+    currentNum = currentNum * -1
+modulus operator,
+    add modulus as operation in mathFuncts
+
+*/
